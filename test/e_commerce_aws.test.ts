@@ -1,17 +1,13 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as ECommerceAws from '../lib/e_commerce_aws-stack';
+import { expect as expectCDK, matchTemplate, MatchStyle } from '@aws-cdk/assert';
+import * as cdk from '@aws-cdk/core';
+import * as ECommerceAws from '../lib/e_commerce_aws-stack';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/e_commerce_aws-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new ECommerceAws.ECommerceAwsStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
-
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+test('Empty Stack', () => {
+    const app = new cdk.App();
+    // WHEN
+    const stack = new ECommerceAws.ECommerceAwsStack(app, 'MyTestStack');
+    // THEN
+    expectCDK(stack).to(matchTemplate({
+      "Resources": {}
+    }, MatchStyle.EXACT))
 });
